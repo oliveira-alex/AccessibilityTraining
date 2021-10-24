@@ -2,25 +2,23 @@
 //  ContentView.swift
 //  AccessibilityTraining
 //
-//  Created by Alex Oliveira on 24/10/21.
+//  Created by Alex Oliveira on 24/10/2021.
 //
 
 import SwiftUI
 
 struct ContentView: View {
-    @State private var score = 1000
+//    @State private var estimate = 25.0
+    @State private var rating = 3
     
     var body: some View {
-        VStack{
-            Text("Your score is")
-            Text(String(score))
-                .font(.title)
-                .onTapGesture {
-                    score += 1
-                }
-        }
-        .accessibilityElement(children: .ignore)
-        .accessibilityLabel(Text("Your score is \(String(score))"))
+//        Slider(value: $estimate, in: 0...50)
+//            .padding()
+//            .accessibilityValue(Text("\(Int(estimate))"))
+        Stepper("Rate our service: \(rating)/5", value: $rating, in: 1...5)
+            .padding()
+            .accessibilityElement(children: .combine)
+            .accessibilityValue(Text("\(rating) out of 5"))
     }
 }
 
